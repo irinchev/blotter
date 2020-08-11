@@ -1,0 +1,24 @@
+{
+  "private": true,
+  "scripts": {
+    "start": "wp"
+  },
+  "dependencies": {
+    "clsx": "^1.1.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-table": "^7.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.2",
+    "@babel/preset-env": "^7.10.2",
+    "@babel/preset-react": "^7.10.1",
+    "babel-loader": "^8.1.0",
+    "style-loader": "^1.2.1",
+    "css-loader": "^3.5.3",
+    "typescript": "^3.9.5",
+    "webpack": "^4.43.0",
+    "webpack-nano": "^1.0.0",
+    "webpack-plugin-serve": "^1.0.1"
+  }
+}
