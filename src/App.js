@@ -47,7 +47,7 @@ function Blotter() {
     }
     return (
         <div className="w-full h-full p-8">
-            <div className="w-full h-full overflow-y-auto">
+            <div className="w-full h-full flex flex-col">
                 <Table columns={columns} data={data}/>
             </div>
         </div>
@@ -69,31 +69,34 @@ function Table({columns, data}) {
 
     // Render the UI for your table
     return (
-        <table {...getTableProps()} className="w-full" cellPadding="0" cellSpacing="0">
-            <thead className="w-full sticky top-0">
-            {headerGroups.map(headerGroup => (
-                <tr {...headerGroup.getHeaderGroupProps()} className="font-bold text-xs">
-                    {headerGroup.headers.map(column => (
-                        <th {...column.getHeaderProps()}
-                            className="text-left padding-2 uppercase text-white">
-                            {column.render('Header')}
-                        </th>
-                    ))}
-                </tr>
-            ))}
-            </thead>
-            <tbody {...getTableBodyProps()}>
-            {rows.map((row, i) => {
-                prepareRow(row)
-                return (
-                    <tr {...row.getRowProps()}>
-                        {row.cells.map(cell => {
-                            return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
-                        })}
+        <div className="flex-1 overflow-y-auto">
+            <table {...getTableProps()} className="w-full border-collapse" cellPadding="0"
+                   cellSpacing="0">
+                <thead className="">
+                {headerGroups.map(headerGroup => (
+                    <tr {...headerGroup.getHeaderGroupProps()} className="w-full font-bold text-xs">
+                        {headerGroup.headers.map(column => (
+                            <th {...column.getHeaderProps()}
+                                className="text-left padding-2 uppercase sticky top-0 bg-indigo-100">
+                                {column.render('Header')}
+                            </th>
+                        ))}
                     </tr>
-                )
-            })}
-            </tbody>
-        </table>
+                ))}
+                </thead>
+                <tbody {...getTableBodyProps()}>
+                {rows.map((row, i) => {
+                    prepareRow(row)
+                    return (
+                        <tr {...row.getRowProps()}>
+                            {row.cells.map(cell => {
+                                return <td className="w-48" {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                            })}
+                        </tr>
+                    )
+                })}
+                </tbody>
+            </table>
+        </div>
     )
 }
